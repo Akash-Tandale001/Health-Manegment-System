@@ -23,10 +23,8 @@ public class SecurityConfig {
                         "/home",
                         "/about",
                         "/bookAppointment",
-                        "/services/",
                         "/services/**",
                         "/doctor",
-                        "/admin/",
                         "/profile/",
                         "/admin/**"
 

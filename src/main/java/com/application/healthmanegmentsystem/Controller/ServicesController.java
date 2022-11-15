@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/services")
 public class ServicesController {
-    @GetMapping("/")
+    @GetMapping()
     public String getServicesPage(){
         return "/View/Services";
     }
