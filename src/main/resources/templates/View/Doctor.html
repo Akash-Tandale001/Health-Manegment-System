@@ -2,9 +2,67 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Doctors</title>
+    <link rel="stylesheet" type="text/css" media="all"  th:href="@{/css/bootstrap.min.css}" />
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/home.css}" />
 </head>
 <body>
 
+<header class="header">
+
+    <a href="/home" class="logo"> <i class="fas fa-heartbeat"></i> medcare. </a>
+
+    <nav class="navbar">
+        <a href="/services">services</a>
+        <a href="/about">about</a>
+        <a href="/doctor">doctors</a>
+        <a href="/bookAppointment">book</a>
+    </nav>
+
+    <div id="menu-btn" class="fas fa-bars"></div>
+
+</header>
+<!-- card section start -->
+<section>
+    <div class="cards-list">
+
+        <div class="card 1">
+            <div class="card_image"> <img th:src="@{https://i.redd.it/b3esnz5ra34y.jpg}" /> </div>
+            <div class="card_title title-white">
+                <p>Card Title</p>
+            </div>
+        </div>
+
+        <div class="card 2">
+            <div class="card_image">
+                <img th:src="@{https://i.redd.it/b3esnz5ra34y.jpg}" />
+            </div>
+            <div class="card_title title-white">
+                <p>Card Title</p>
+            </div>
+        </div>
+
+        <div class="card 3">
+            <div class="card_image">
+                <img th:src="@{https://media.giphy.com/media/10SvWCbt1ytWCc/giphy.gif}" />
+            </div>
+            <div class="card_title">
+                <p>Card Title</p>
+            </div>
+        </div>
+
+        <div class="card 4">
+            <div class="card_image">
+                <img th:src="@{https://media.giphy.com/media/LwIyvaNcnzsD6/giphy.gif}"  />
+            </div>
+            <div class="card_title title-black">
+                <p>Card Title</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+<script type="text/javascript" th:src="@{/js/home.js}"></script>
+<script type="text/javascript"  src="/js/login.js" th:src="@{/js/bootstrap.min.js}"></script>
 </body>
 </html>
