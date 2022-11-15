@@ -37,7 +37,16 @@ body {
 /*span {*/
 /*    font-size: 12px;*/
 /*}*/
-
+.login{
+    margin-top:14rem;
+}
+h1{
+    font-size:4rem;
+    padding-bottom:3rem;
+}
+.par{
+    font-size:2rem;
+}
 a {
     color: #333;
     font-size: 14px;
