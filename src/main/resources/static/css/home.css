@@ -37,7 +37,7 @@ a{
 .heading{
     text-align: center;
     padding-bottom: 2rem;
-    text-shadow: var(--text-shadow);
+    /*text-shadow: var(--text-shadow);*/
     text-transform: uppercase;
     color:var(--black);
     font-size: 5rem;

@@ -26,8 +26,9 @@ public class SecurityConfig {
                         "/services/",
                         "/services/**",
                         "/doctor",
-                        "/admin",
-                        "/profile/"
+                        "/admin/",
+                        "/profile/",
+                        "/admin/**"
 
                 ).permitAll()
                 .anyRequest()
