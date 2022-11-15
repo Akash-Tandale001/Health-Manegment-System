@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>About</title>
+    <title>Bed Facility</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css" media="all"  th:href="@{/css/bootstrap.min.css}" />
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/home.css}" />
@@ -23,26 +23,24 @@
     <div id="menu-btn" class="fas fa-bars"></div>
 
 </header>
+<section class="book" id="book" style="margin-top: 6em">
 
-<!-- about section starts  -->
-
-
-<section class="about" id="about" >
-
-    <h1 class="heading"> <span>about</span> us </h1>
+    <h1 class="heading"> <span>Bed</span> Facility </h1>
 
     <div class="row">
 
         <div class="image">
-            <img  th:src="@{/image/about-img.svg}" alt=""/>
+            <img th:src="@{/image/book-img.svg}"  alt="">
         </div>
 
-        <div class="content">
-            <h3>we take care of your healthy life</h3>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iure ducimus, quod ex cupiditate ullam in assumenda maiores et culpa odit tempora ipsam qui, quisquam quis facere iste fuga, minus nesciunt.</p>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus vero ipsam laborum porro voluptates voluptatibus a nihil temporibus deserunt vel?</p>
-            <a href="#" class="btn"> learn more <span class="fas fa-chevron-right"></span> </a>
-        </div>
+        <form action="">
+            <h3>book appointment</h3>
+            <input type="text" placeholder="your name" class="box">
+            <input type="number" placeholder="your number" class="box">
+            <input type="email" placeholder="your email" class="box">
+            <input title="date" type="date"  class="box">
+            <input type="submit" value="book now" class="btn">
+        </form>
 
     </div>
 
