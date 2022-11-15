@@ -25,7 +25,11 @@ public class SecurityConfig {
                         "/bookAppointment",
                         "/services/",
                         "/services/**",
-                        "/doctor").permitAll()
+                        "/doctor",
+                        "/admin",
+                        "/profile/"
+
+                ).permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()

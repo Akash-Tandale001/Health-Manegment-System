@@ -81,8 +81,8 @@ a{
     background:#fff;
     margin-left: 1rem;
 }
-.header.p{
-
+.header p{
+    font-size:2em ;
 
 }
 .header{
