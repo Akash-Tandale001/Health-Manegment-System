@@ -20,7 +20,6 @@ public class SecurityConfig {
                         "/css/**",
                         "/image/**",
                         "/login",
-                        "/home",
                         "/about",
                         "/bookAppointment",
                         "/services/**",
