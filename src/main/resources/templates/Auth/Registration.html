@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" media="all"  th:href="@{/css/login.css}" />
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/home.css}" />
+</head>
+<body>
+<header class="header">
+    <p><i class="fas fa-heartbeat"></i> medcare.</p>
+    <nav class="navbar">
+        <a href="/" >Home</a>
+        <a href="/services">services</a>
+        <a href="/about">about</a>
+        <a href="/doctor">doctors</a>
+        <a href="/bookAppointment">book</a>
+    </nav>
+    <div id="menu-btn" class="fas fa-bars"></div>
+</header>
+
+<section class="login">
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form th:action="@{/process-registration}" method="post" th:object="${userInfo}" >
+        <h3>Login Here</h3>
+        <label for="username">Name</label>
+        <input type="text" placeholder="FirstName and Lastname" id="name" th:field="*{firstName}">
+
+        <label for="username">Email</label>
+        <input type="email" placeholder="Email or Phone" id="username" th:field="*{username}">
+
+        <label for="password">Password</label>
+        <input type="password" placeholder="Password" id="password" th:field="*{password}">
+
+        <button type="submit">Sign Up</button>
+        <div class="social">
+            <div class="go"><i class="fab fa-google"></i>  Google</div>
+            <div class="fb"><i class="fab fa-facebook"></i>  Facebook</div>
+        </div>
+        <div class="link">
+            <a th:href="@{/login}"> Already Register </a>
+        </div>
+    </form>
+</section>
+</body>
+</html>
