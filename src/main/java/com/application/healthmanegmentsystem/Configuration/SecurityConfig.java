@@ -68,7 +68,7 @@ public class SecurityConfig {
                 .and()
                 .httpBasic()
                 .and()
-                .logout().permitAll()
+                .logout().logoutUrl("/logout").logoutSuccessUrl("/login")
                 .and()
                 .exceptionHandling().accessDeniedPage("/accessDenied")
                 .and()

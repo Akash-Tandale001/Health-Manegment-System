@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
 <head>
     <meta charset="UTF-8">
     <title>Book Appointment</title>
@@ -18,6 +20,10 @@
         <a href="/about">about</a>
         <a href="/doctor">doctors</a>
         <a href="/bookAppointment">book</a>
+        <a href="/profile" sec:authorize="isAuthenticated()"><i class="fa-solid fa-circle-user fs-1 ml-4"></i></a>
+        <form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
+            <input type="submit" style="margin-left: 1em" class="fs-3" value="Sign Out"/>
+        </form>
     </nav>
 
     <div id="menu-btn" class="fas fa-bars"></div>
