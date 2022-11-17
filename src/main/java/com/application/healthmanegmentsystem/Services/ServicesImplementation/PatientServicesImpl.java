@@ -22,7 +22,7 @@ public class PatientServicesImpl implements PatientServices {
     @Override
     public String processRegistration(UserInfo userInfo) {
         Set<Role> roleSet = new HashSet<>();
-        roleSet.add(new Role("ADMIN"));
+        roleSet.add(new Role("USER"));
         String[] name = userInfo.getFirstName().split(" ",2);
         userInfo.setFirstName(name[0]);
         userInfo.setLastName(name[1]);
