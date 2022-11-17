@@ -29,11 +29,15 @@ public class SecurityConfig {
             "/login",
             "/registration",
             "/process-registration",
-            "/about",
-            "/bookAppointment",
+            "/about"
+    };
+    private  static final String[] PRIVATE_ENDPOINT ={
             "/services/**",
-            "/doctor",
             "/profile",
+            "/bookAppointment",
+            "/doctor",
+    };
+    private static final String[] ADMIN_ENDPOINT = {
             "/admin/**"
     };
 
@@ -54,15 +58,19 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                .antMatchers(ADMIN_ENDPOINT).hasAuthority("ADMIN")
+                .antMatchers(PRIVATE_ENDPOINT).authenticated()
                 .antMatchers(PUBLIC_ENDPOINT).permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
-                .formLogin().loginPage("/login").loginProcessingUrl("/process-login")
+                .formLogin().loginPage("/login").loginProcessingUrl("/process-login").permitAll()
                 .and()
                 .httpBasic()
                 .and()
-                .logout()
+                .logout().permitAll()
+                .and()
+                .exceptionHandling().accessDeniedPage("/accessDenied")
                 .and()
                 .csrf()
                 .and()
