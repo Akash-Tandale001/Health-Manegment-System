@@ -46,4 +46,9 @@ public class UserInfo {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<Role> roles = new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name="user_appointments")
+    private Set<Appointment> appointmentList;
+
 }

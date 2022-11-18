@@ -39,13 +39,13 @@
             <img th:src="@{/image/book-img.svg}"  alt="">
         </div>
 
-        <form action="">
+        <form th:action="@{/applyAppointment}" method="post" th:object="${appointmentInfo}" >
             <h3>book appointment</h3>
-            <input type="text" placeholder="your name" class="box">
-            <input type="number" placeholder="your number" class="box">
-            <input type="email" placeholder="your email" class="box">
-            <input title="date" type="date"  class="box">
-            <input type="submit" value="book now" class="btn">
+            <input type="text" th:field="*{name}" placeholder="your FirstName and LastName" id="name" class="box" >
+            <input type="text" placeholder="your number" class="box" id="mobileNo" th:field="*{mobileNo}">
+            <input type="email" placeholder="your email" class="box" id="email" th:field="*{email}">
+            <input title="date" type="date"  class="box" id="date" th:field="*{date}">
+            <button type="submit" class="btn">Book Now</button>
         </form>
 
     </div>

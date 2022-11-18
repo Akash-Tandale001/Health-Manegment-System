@@ -36,6 +36,7 @@ public class SecurityConfig {
             "/profile",
             "/bookAppointment",
             "/doctor",
+            "/applyAppointment"
     };
     private static final String[] ADMIN_ENDPOINT = {
             "/admin/**"
