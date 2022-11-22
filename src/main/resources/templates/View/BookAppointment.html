@@ -11,24 +11,11 @@
 </head>
 <body>
 
-<header class="header">
+<!--header section Start -->
 
-    <p><i class="fas fa-heartbeat"></i> medcare.</p>
-    <nav class="navbar">
-        <a href="/" >Home</a>
-        <a href="/services">services</a>
-        <a href="/about">about</a>
-        <a href="/doctor">doctors</a>
-        <a href="/bookAppointment">book</a>
-        <a href="/profile" sec:authorize="isAuthenticated()"><i class="fa-solid fa-circle-user fs-1 ml-4"></i></a>
-        <form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
-            <input type="submit" style="margin-left: 1em" class="fs-3" value="Sign Out"/>
-        </form>
-    </nav>
+<header th:replace="Base/Header::navbar"/>
 
-    <div id="menu-btn" class="fas fa-bars"></div>
-
-</header>
+<!-- header section ends -->
 <section class="book" id="book">
 
     <h1 class="heading"> <span>book</span> now </h1>
