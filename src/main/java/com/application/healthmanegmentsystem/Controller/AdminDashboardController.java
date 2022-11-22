@@ -1,14 +1,26 @@
 package com.application.healthmanegmentsystem.Controller;
 
+import com.application.healthmanegmentsystem.Entity.Appointment;
+import com.application.healthmanegmentsystem.Entity.UserInfo;
+import com.application.healthmanegmentsystem.Services.ServicesImplementation.PatientServicesImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminDashboardController {
+    @Autowired
+    private PatientServicesImpl patientServices;
     @GetMapping()
-    public String getAdminDashboard(){
+    public String getAdminDashboard(Model model){
+        List<UserInfo> userInfoList = patientServices.getAllUser();
+        model.addAttribute("patients",userInfoList);
         return "/Auth/AdminDashboard";
     }
     @GetMapping("/ambulanceRequest")
@@ -30,5 +42,11 @@ public class AdminDashboardController {
     @GetMapping("/totalCareRequest")
     public String getTotalCareRequest(){
         return "/Auth/AdminRequestView/TotalCareRequest";
+    }
+    @GetMapping("/appointmentRequest")
+    public String getApplicationRequest(Model model){
+        List<Appointment> appointmentList = patientServices.getAllAppointment() ;
+        model.addAttribute("appointmentList",appointmentList);
+        return "/Auth/AdminRequestView/AppointmentRequest";
     }
 }

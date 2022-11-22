@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
 <head>
     <meta charset="UTF-8">
     <title>Book Appointment</title>
@@ -18,6 +20,10 @@
         <a href="/about">about</a>
         <a href="/doctor">doctors</a>
         <a href="/bookAppointment">book</a>
+        <a href="/profile" sec:authorize="isAuthenticated()"><i class="fa-solid fa-circle-user fs-1 ml-4"></i></a>
+        <form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
+            <input type="submit" style="margin-left: 1em" class="fs-3" value="Sign Out"/>
+        </form>
     </nav>
 
     <div id="menu-btn" class="fas fa-bars"></div>
@@ -33,13 +39,13 @@
             <img th:src="@{/image/book-img.svg}"  alt="">
         </div>
 
-        <form action="">
+        <form th:action="@{/applyAppointment}" method="post" th:object="${appointmentInfo}" >
             <h3>book appointment</h3>
-            <input type="text" placeholder="your name" class="box">
-            <input type="number" placeholder="your number" class="box">
-            <input type="email" placeholder="your email" class="box">
-            <input title="date" type="date"  class="box">
-            <input type="submit" value="book now" class="btn">
+            <input type="text" th:field="*{name}" placeholder="your FirstName and LastName" id="name" class="box" >
+            <input type="text" placeholder="your number" class="box" id="mobileNo" th:field="*{mobileNo}">
+            <input type="email" placeholder="your email" class="box" id="email" th:field="*{email}">
+            <input title="date" type="date"  class="box" id="date" th:field="*{date}">
+            <button type="submit" class="btn">Book Now</button>
         </form>
 
     </div>

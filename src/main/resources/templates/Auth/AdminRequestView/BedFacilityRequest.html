@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
 <head>
     <meta charset="UTF-8">
     <title>BedFacility Request</title>
@@ -12,11 +14,15 @@
 <header class="header">
     <p><i class="fas fa-heartbeat"></i> medcare.</p>
     <nav class="navbar">
-        <a href="/home" >Home</a>
-        <a href="/services/">services</a>
+        <a href="/" >Home</a>
+        <a href="/services">services</a>
         <a href="/about">about</a>
-        <a href="/doctors">doctors</a>
-        <a href="/book">book</a>
+        <a href="/doctor">doctors</a>
+        <a href="/bookAppointment">book</a>
+        <a href="/profile" sec:authorize="isAuthenticated()"><i class="fa-solid fa-circle-user fs-1 ml-4"></i></a>
+        <form th:action="@{/logout}" method="post" sec:authorize="isAuthenticated()">
+            <input type="submit" style="margin-left: 1em" class="fs-3" value="Sign Out"/>
+        </form>
     </nav>
     <div id="menu-btn" class="fas fa-bars"></div>
 </header>
@@ -42,6 +48,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/admin/totalCareRequest">TotalCare Request</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/appointmentRequest">Appointment Request</a>
             </li>
         </ul>
     </div>

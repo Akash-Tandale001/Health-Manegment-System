@@ -36,6 +36,7 @@ public class SecurityConfig {
             "/profile",
             "/bookAppointment",
             "/doctor",
+            "/applyAppointment"
     };
     private static final String[] ADMIN_ENDPOINT = {
             "/admin/**"
@@ -68,7 +69,7 @@ public class SecurityConfig {
                 .and()
                 .httpBasic()
                 .and()
-                .logout().permitAll()
+                .logout().logoutUrl("/logout").logoutSuccessUrl("/login")
                 .and()
                 .exceptionHandling().accessDeniedPage("/accessDenied")
                 .and()
