@@ -14,21 +14,11 @@
 </head>
 <body>
 
-<header class="header">
+<!--header section Start -->
 
-    <p><i class="fas fa-heartbeat"></i> medcare.</p>
-    <nav class="navbar">
-        <a href="/" >Home</a>
-        <a href="/services">services</a>
-        <a href="/about">about</a>
-        <a href="/doctor">doctors</a>
-        <a href="/bookAppointment">book</a>
-        <a href="/profile" sec:authorize="isAuthenticated()"><i class="fa-solid fa-circle-user fs-1 ml-4"></i></a>
-    </nav>
+<header th:replace="Base/Header::navbar"/>
 
-    <div id="menu-btn" class="fas fa-bars"></div>
-
-</header>
+<!-- header section ends -->
 
 <!-- about section starts  -->
 
