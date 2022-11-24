@@ -26,6 +26,7 @@ public class Appointment {
     private String mobileNo;
     @Email(message = "Invalid Email formate")
     private String email;
-    @DateTimeFormat(iso= DateTimeFormat.ISO.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
+    private Boolean status;
 }

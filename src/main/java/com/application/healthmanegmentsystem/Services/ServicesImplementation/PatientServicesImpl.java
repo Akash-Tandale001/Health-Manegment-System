@@ -26,7 +26,7 @@ public class PatientServicesImpl implements PatientServices {
     @Override
     public String processRegistration(UserInfo userInfo) {
         Set<Role> roleSet = new HashSet<>();
-        roleSet.add(new Role("ADMIN"));
+        roleSet.add(new Role("USER"));
         String[] name = userInfo.getFirstName().split(" ",2);
         userInfo.setFirstName(name[0]);
         userInfo.setLastName(name.length == 2 ? name[1]:"");
@@ -64,9 +64,24 @@ public class PatientServicesImpl implements PatientServices {
     public void saveAppoinment(Appointment appointment,String username) {
         UserInfo userinfo = userInfoRepository.findByUsername(username);
         Set<Appointment> appointmentSet = new HashSet<>();
-        System.out.println(appointment);
+        appointment.setStatus(false);
         appointmentSet.add(appointment);
         userinfo.setAppointmentList(appointmentSet);
         userInfoRepository.save(userinfo);
+    }
+
+    @Override
+    public void acceptAppointmentById(Long id) {
+        Appointment appointment = appointmentRepository.findAppointmentById(id);
+        appointment.setStatus(true);
+        appointmentRepository.save(appointment);
+    }
+
+    @Override
+    public void rejectAppointmentById(Long id) {
+        Appointment appointment = appointmentRepository.findAppointmentById(id);
+        appointment.setStatus(false);
+        appointmentRepository.save(appointment);
+
     }
 }

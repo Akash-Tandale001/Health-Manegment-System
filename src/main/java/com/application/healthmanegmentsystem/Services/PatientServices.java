@@ -15,4 +15,6 @@ public interface PatientServices {
     void updateProfile(UserInfo userInfo);
 
     void saveAppoinment(Appointment appointment,String username);
+    void acceptAppointmentById(Long id);
+    void rejectAppointmentById(Long id);
 }

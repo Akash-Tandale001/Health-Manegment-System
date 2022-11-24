@@ -6,8 +6,7 @@ import com.application.healthmanegmentsystem.Services.ServicesImplementation.Pat
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Set;
@@ -48,5 +47,15 @@ public class AdminDashboardController {
         List<Appointment> appointmentList = patientServices.getAllAppointment() ;
         model.addAttribute("appointmentList",appointmentList);
         return "/Auth/AdminRequestView/AppointmentRequest";
+    }
+    @GetMapping("/acceptAppointmentRequest/{id}")
+    public String acceptApplicationRequest(@PathVariable("id") Long id){
+        patientServices.acceptAppointmentById(id);
+        return "redirect:/admin/appointmentRequest";
+    }
+    @GetMapping("/rejectAppointmentRequest/{id}")
+    public String rejectApplicationRequest(@PathVariable("id") Long id){
+        patientServices.rejectAppointmentById(id);
+        return "redirect:/admin/appointmentRequest";
     }
 }
