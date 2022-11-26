@@ -33,7 +33,7 @@ public class SecurityConfig {
     };
     private  static final String[] PRIVATE_ENDPOINT ={
             "/services/**",
-            "/profile",
+            "/profile/**",
             "/bookAppointment",
             "/doctor",
             "/applyAppointment"

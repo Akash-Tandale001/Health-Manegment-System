@@ -58,4 +58,9 @@ public class AdminDashboardController {
         patientServices.rejectAppointmentById(id);
         return "redirect:/admin/appointmentRequest";
     }
+    @GetMapping("/updateRole/{id}/{role}")
+    public String updateUserRole(@PathVariable("id") Long id,@PathVariable("role") String role){
+//        patientServices.updateUserRole(id,role);
+        return "/Auth/AdminDashboard";
+    }
 }
