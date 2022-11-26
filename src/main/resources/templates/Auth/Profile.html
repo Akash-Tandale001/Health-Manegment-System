@@ -30,8 +30,8 @@
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 class="text-right fs-2">Profile Settings</h4>
-                    <h3 sec:authorize="hasAuthority('USER')" >user</h3>
                     <h3 style="color: red" sec:authorize="hasAuthority('ADMIN')" ><a href="/admin" style="text-decoration: none">Admin DashBoard</a></h3>
+                    <h3 style="color: red" sec:authorize="hasAnyAuthority('USER','ADMIN') " ><a href="#" style="text-decoration: none">Application request</a></h3>
                 </div>
                 <form th:action="@{/profile/processDetailsUpdate}" method="post" th:object="${userInfo}">
                 <div class="row mt-2">

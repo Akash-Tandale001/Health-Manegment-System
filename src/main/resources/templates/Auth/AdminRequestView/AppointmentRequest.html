@@ -68,20 +68,16 @@
             <td th:text="${appointment.email}"/>
             <td th:text="${appointment.mobileNo}"/>
             <td>
-<!--                <form th:action="@{acceptAppointmentRequest(id=${appointment.id})}" method="get">-->
                 <a class="btn btn-success"
                         th:if="${!appointment.status}"
                         th:data-parameter1="${appointment.id}"
                         th:href="@{acceptAppointmentRequest/{id}(id = ${appointment.id})}"
                 >Accept</a>
-<!--                </form>-->
-<!--                <form th:action="@{rejectAppointmentRequest(id=${appointment.id})}" method="get">-->
                 <a class="btn btn-success"
                         th:if="${appointment.status}"
                         th:data-parameter1="${appointment.id}"
                         th:href="@{rejectAppointmentRequest/{id}(id = ${appointment.id})}"
                         >Reject</a>
-<!--                </form>-->
             </td>
         </tr>
         </tbody>
