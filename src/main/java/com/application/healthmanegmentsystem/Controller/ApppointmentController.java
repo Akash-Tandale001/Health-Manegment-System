@@ -23,7 +23,6 @@ public class ApppointmentController {
     }
     @PostMapping("/applyAppointment")
     public String saveAppointmeent(@Valid @ModelAttribute("appointmentInfo") Appointment appointment , BindingResult result , Authentication auth){
-        System.out.println(appointment);
         if(result.hasErrors()){
             System.out.println(result.getAllErrors());
             return "/View/BookAppointment";

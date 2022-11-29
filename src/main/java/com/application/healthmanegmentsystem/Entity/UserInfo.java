@@ -49,9 +49,29 @@ public class UserInfo {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Role roles;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name="user_appointments")
     private Set<Appointment> appointmentList;
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name="ambulance_service")
+    private Set<AmbulanceService> ambulanceServiceList;
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name="bedFacility_service")
+    private Set<BedFacilityService> bedFacilityServiceList;
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name="freeCheckup_service")
+    private Set<FreeCheckupService> freeCheckupServiceList;
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name="medicine_service")
+    private Set<MedicineService> medicineServicesList;
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name="totalcare_service")
+    private Set<TotalcareService> totalcareServicesList;
 
     @Transient
     private String role;

@@ -46,6 +46,45 @@
     </div>
 </section>
 
+<section>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Sr no.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Email</th>
+            <th scope="col">Issue</th>
+            <th scope="col">Date</th>
+            <th scope="col">Operation</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="freeCheckupServices, freeCheckupServiceState : ${freeCheckupServicesList}">
+            <th scope="row" th:text="${freeCheckupServices.id}"/>
+            <td th:text="${freeCheckupServices.name}"/>
+            <td th:text="${freeCheckupServices.phoneNumber}"/>
+            <td th:text="${freeCheckupServices.email}"/>
+            <td th:text="${freeCheckupServices.issue}"/>
+            <td th:text="${freeCheckupServices.date}"/>
+            <td>
+                <a class="btn btn-success"
+                   th:if="${!freeCheckupServices.status}"
+                   th:data-parameter1="${freeCheckupServices.id}"
+                   th:href="@{acceptfreeCheckupRequest/{id}(id = ${freeCheckupServices.id})}"
+                >Accept</a>
+                <a class="btn btn-success"
+                   th:if="${freeCheckupServices.status}"
+                   th:data-parameter1="${freeCheckupServices.id}"
+                   th:href="@{rejectfreeCheckupRequest/{id}(id = ${freeCheckupServices.id})}"
+                >Reject</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</section>
+
 <script type="text/javascript"  src="/js/login.js" th:src="@{/js/bootstrap.min.js}"></script>
 <script type="text/javascript"  th:src="@{/js/admin.js}"></script>
 </body>

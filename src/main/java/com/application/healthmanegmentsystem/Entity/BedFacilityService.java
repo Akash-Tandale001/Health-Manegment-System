@@ -4,30 +4,25 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.security.core.userdetails.User;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "appointments")
-public class Appointment {
+@Table(name = "bedFacilityService")
+public class BedFacilityService {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "appointment_id")
+    @Column(name = "bedFacility_id")
     private Long id;
-    @NotBlank(message = "Name can't be blank")
     private String name;
-    private String mobileNo;
-    @Email(message = "Invalid Email formate")
-    private String email;
+    private String phoneNumber;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date date;
+    private String bed;
     private Boolean status;
 }
