@@ -26,13 +26,13 @@
             <img th:src="@{/image/book-img.svg}"  alt="">
         </div>
 
-        <form th:action="@{/applyFreeCheckup}">
-            <h3>book appointment</h3>
-            <input type="text" placeholder="Name" class="box">
-            <input type="tel" placeholder="Phone Number" class="box">
-            <input type="email" placeholder="Email" class="box">
-            <input title="Date" type="datetime-local"  class="box">
-            <input placeholder="Issue" type="text"  class="box">
+        <form th:action="@{/applyFreeCheckup}" th:object="${freecheckupInfo}" th:method="post">
+            <h3>Free Checkup </h3>
+            <input type="text" placeholder="Name" class="box" th:field="*{name}">
+            <input type="tel" placeholder="Phone Number" class="box" th:field="*{phoneNumber}">
+            <input type="email" placeholder="Email" class="box" th:field="*{email}">
+            <input title="Date" type="datetime-local"  class="box" th:field="*{data}">
+            <input placeholder="Issue" type="text"  class="box" th:field="*{issue}">
             <input type="submit" value="book now" class="btn">
         </form>
 
