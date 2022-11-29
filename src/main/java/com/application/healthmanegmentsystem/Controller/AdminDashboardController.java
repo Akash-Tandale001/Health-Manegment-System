@@ -91,12 +91,12 @@ public class AdminDashboardController {
         model.addAttribute("totalcareServicesList",totalcareServices);
         return "/Auth/AdminRequestView/TotalCareRequest";
     }
-    @GetMapping("/acceptAppointmentRequest/{id}")
+    @GetMapping("/accepttotalCareRequest/{id}")
     public String acceptTotalCareRequest(@PathVariable("id") Long id){
         patientServices.acceptTotalcareServiceById(id);
         return "redirect:/admin/totalCareRequest";
     }
-    @GetMapping("/rejectAppointmentRequest/{id}")
+    @GetMapping("/rejecttotalCareRequest/{id}")
     public String rejectTotalCareRequest(@PathVariable("id") Long id){
         patientServices.rejectTotalcareServiceById(id);
         return "redirect:/admin/totalCareRequest";

@@ -46,6 +46,43 @@
     </div>
 </section>
 
+<section>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Sr no.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Address</th>
+            <th scope="col">Date of Request</th>
+            <th scope="col">Operation</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ambulanceService, ambulanceServiceState : ${ambulanceServiceList}">
+            <th scope="row" th:text="${ambulanceService.id}"/>
+            <td th:text="${ambulanceService.name}"/>
+            <td th:text="${ambulanceService.phoneNumber}"/>
+            <td th:text="${ambulanceService.address}"/>
+            <td th:text="${ambulanceService.date}"/>
+            <td>
+                <a class="btn btn-success"
+                   th:if="${!ambulanceService.status}"
+                   th:data-parameter1="${ambulanceService.id}"
+                   th:href="@{acceptambulanceRequest/{id}(id = ${ambulanceService.id})}"
+                >Accept</a>
+                <a class="btn btn-success"
+                   th:if="${ambulanceService.status}"
+                   th:data-parameter1="${ambulanceService.id}"
+                   th:href="@{rejectambulanceRequest/{id}(id = ${ambulanceService.id})}"
+                >Reject</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</section>
+
 <script type="text/javascript"  src="/js/login.js" th:src="@{/js/bootstrap.min.js}"></script>
 <script type="text/javascript"  th:src="@{/js/admin.js}"></script>
 </body>
