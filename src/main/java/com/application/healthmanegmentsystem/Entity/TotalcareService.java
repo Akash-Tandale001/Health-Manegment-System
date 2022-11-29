@@ -11,15 +11,14 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "bedFacilityService")
+@Table(name = "totalcareService")
 public class TotalcareService {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "medicine_id")
+    @Column(name = "totalCare_id")
     private Long id;
     private String name;
     private String phoneNumber;
-    @Length(min = 1 ,max = 12)
     private int familySize;
     private Boolean status;
 }
