@@ -1,63 +1,99 @@
 package com.application.healthmanegmentsystem.Controller;
 
+import com.application.healthmanegmentsystem.Entity.*;
+import com.application.healthmanegmentsystem.Services.PatientServices;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/services")
 public class ServicesController {
+    @Autowired
+    PatientServices patientServices;
     @GetMapping()
     public String getServicesPage(){
         return "/View/Services";
     }
 
     @GetMapping("/freeCheckup")
-    public String getServicesFreeCheckupPage(){
+    public String getServicesFreeCheckupPage(@ModelAttribute("freecheckupInfo")FreeCheckupService freeCheckupService){
         return "/ServicesForm/FreeCheckup";
     }
     @PostMapping("/applyFreeCheckup")
-    public String applyFreeCheckupPage(){
-        return "redirect:/freeCheckup";
+    public String applyFreeCheckupPage(@Valid @ModelAttribute("freecheckupInfo")FreeCheckupService freeCheckupService , BindingResult result , Authentication auth){
+        if(result.hasErrors()){
+            System.out.println(result.getAllErrors());
+            return "redirect:/freeCheckup?error";
+        }
+        patientServices.saveFreeCheckupService(freeCheckupService, auth.getName());
+        return "redirect:/freeCheckup?sucess";
     }
 
     @GetMapping("/ambulance")
-    public String getServicesAmbulancePage(){
+    public String getServicesAmbulancePage(@ModelAttribute("ambulanceInfo")AmbulanceService ambulanceService){
+
         return "/ServicesForm/Ambulance";
     }
     @PostMapping("/applyAmbulance")
-    public String applyAmbulancePage(){
-        return "redirect:/ambulance";
+    public String applyAmbulancePage(@Valid @ModelAttribute("ambulanceInfo")AmbulanceService ambulanceService , BindingResult result , Authentication auth){
+        if(result.hasErrors()){
+            System.out.println(result.getAllErrors());
+            return "redirect:/ambulance?error";
+        }
+        patientServices.saveAmbulanceService(ambulanceService, auth.getName());
+        return "redirect:/ambulance?sucess";
     }
 
 
     @GetMapping("/medicines")
-    public String getServicesMedicinesPage(){
+    public String getServicesMedicinesPage(@ModelAttribute("medicineInfo")MedicineService medicineService){
         return "/ServicesForm/Medicines";
     }
     @PostMapping("/applyMedicines")
-    public String applyMedicinesPage(){
-        return "redirect:/medicines";
+    public String applyMedicinesPage(@Valid @ModelAttribute("medicineInfo")MedicineService medicineService , BindingResult result , Authentication auth){
+        if(result.hasErrors()){
+            System.out.println(result.getAllErrors());
+            return "redirect:/medicines?error";
+        }
+        patientServices.saveMedicineService(medicineService, auth.getName());
+        return "redirect:/medicines?sucess";
     }
 
 
     @GetMapping("/bedFacility")
-    public String getServicesBedFacilityPage(){
+    public String getServicesBedFacilityPage(@ModelAttribute("bedFacilityInfo")BedFacilityService bedFacilityService){
         return "/ServicesForm/BedFacility";
     }
     @PostMapping("/applyBedFacility")
-    public String applyBedFacilityPage(){
-        return "redirect:/bedFacility";
+    public String applyBedFacilityPage(@Valid @ModelAttribute("bedFacilityInfo")BedFacilityService bedFacilityService , BindingResult result , Authentication auth){
+        if(result.hasErrors()){
+            System.out.println(result.getAllErrors());
+            return "redirect:/bedFacility?error";
+        }
+        patientServices.saveBedFacilityService(bedFacilityService, auth.getName());
+        return "redirect:/bedFacility?sucess";
     }
 
     @GetMapping("/totalCare")
-    public String getServicesTotalCarePage(){
+    public String getServicesTotalCarePage(@ModelAttribute("totalCareInfo")TotalcareService totalcareService){
         return "/ServicesForm/TotalCare";
     }
     @PostMapping("/applyTotalCare")
-    public String applyTotalCarePage(){
-        return "redirect:/totalCare";
+    public String applyTotalCarePage(@Valid @ModelAttribute("totalCareInfo")TotalcareService totalcareService , BindingResult result , Authentication auth){
+        if(result.hasErrors()){
+            System.out.println(result.getAllErrors());
+            return "redirect:/totalCare?error";
+        }
+        patientServices.saveTotalcareService(totalcareService, auth.getName());
+        return "redirect:/totalCare?sucess";
     }
 
 

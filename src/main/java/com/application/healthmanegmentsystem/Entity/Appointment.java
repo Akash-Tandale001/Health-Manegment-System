@@ -27,6 +27,7 @@ public class Appointment {
     @Email(message = "Invalid Email formate")
     private String email;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
     private Date date;
     private Boolean status;
 }
