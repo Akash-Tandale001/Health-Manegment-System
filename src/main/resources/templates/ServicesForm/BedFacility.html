@@ -26,7 +26,7 @@
             <img th:src="@{/image/book-img.svg}"  alt="">
         </div>
 
-        <form th:action="@{/applyBedFacility}" th:object="${bedFacilityInfo}" th:method="post">
+        <form th:action="@{/services/applyBedFacility}" th:object="${bedFacilityInfo}" th:method="post">
             <h3>book bed</h3>
             <input type="text" placeholder="Name" class="box" th:field="*{name}">
             <input type="tel" placeholder="Phone Number" class="box" th:field="*{phoneNumber}">

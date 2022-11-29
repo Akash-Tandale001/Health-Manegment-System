@@ -23,6 +23,6 @@ public class AmbulanceService {
     private String Address;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
-    private Date data;
+    private Date date;
     private Boolean status;
 }

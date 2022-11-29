@@ -22,7 +22,7 @@ public class BedFacilityService {
     private String phoneNumber;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
-    private Date data;
+    private Date date;
     private String bed;
     private Boolean status;
 }

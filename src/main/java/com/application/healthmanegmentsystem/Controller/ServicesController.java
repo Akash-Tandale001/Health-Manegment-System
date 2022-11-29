@@ -31,10 +31,10 @@ public class ServicesController {
     public String applyFreeCheckupPage(@Valid @ModelAttribute("freecheckupInfo")FreeCheckupService freeCheckupService , BindingResult result , Authentication auth){
         if(result.hasErrors()){
             System.out.println(result.getAllErrors());
-            return "redirect:/freeCheckup?error";
+            return "redirect:/services/freeCheckup?error";
         }
         patientServices.saveFreeCheckupService(freeCheckupService, auth.getName());
-        return "redirect:/freeCheckup?sucess";
+        return "redirect:/services/freeCheckup?sucess";
     }
 
     @GetMapping("/ambulance")
@@ -46,10 +46,10 @@ public class ServicesController {
     public String applyAmbulancePage(@Valid @ModelAttribute("ambulanceInfo")AmbulanceService ambulanceService , BindingResult result , Authentication auth){
         if(result.hasErrors()){
             System.out.println(result.getAllErrors());
-            return "redirect:/ambulance?error";
+            return "redirect:/services/ambulance?error";
         }
         patientServices.saveAmbulanceService(ambulanceService, auth.getName());
-        return "redirect:/ambulance?sucess";
+        return "redirect:/services/ambulance?sucess";
     }
 
 
@@ -61,10 +61,10 @@ public class ServicesController {
     public String applyMedicinesPage(@Valid @ModelAttribute("medicineInfo")MedicineService medicineService , BindingResult result , Authentication auth){
         if(result.hasErrors()){
             System.out.println(result.getAllErrors());
-            return "redirect:/medicines?error";
+            return "redirect:/services/medicines?error";
         }
         patientServices.saveMedicineService(medicineService, auth.getName());
-        return "redirect:/medicines?sucess";
+        return "redirect:/services/medicines?sucess";
     }
 
 
@@ -76,10 +76,10 @@ public class ServicesController {
     public String applyBedFacilityPage(@Valid @ModelAttribute("bedFacilityInfo")BedFacilityService bedFacilityService , BindingResult result , Authentication auth){
         if(result.hasErrors()){
             System.out.println(result.getAllErrors());
-            return "redirect:/bedFacility?error";
+            return "redirect:/services/bedFacility?error";
         }
         patientServices.saveBedFacilityService(bedFacilityService, auth.getName());
-        return "redirect:/bedFacility?sucess";
+        return "redirect:/services/bedFacility?sucess";
     }
 
     @GetMapping("/totalCare")
@@ -90,10 +90,10 @@ public class ServicesController {
     public String applyTotalCarePage(@Valid @ModelAttribute("totalCareInfo")TotalcareService totalcareService , BindingResult result , Authentication auth){
         if(result.hasErrors()){
             System.out.println(result.getAllErrors());
-            return "redirect:/totalCare?error";
+            return "redirect:/services/totalCare?error";
         }
         patientServices.saveTotalcareService(totalcareService, auth.getName());
-        return "redirect:/totalCare?sucess";
+        return "redirect:/services/totalCare?sucess";
     }
 
 

@@ -25,6 +25,6 @@ public class FreeCheckupService {
     private String email;
     private String issue;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date data;
+    private Date date;
     private boolean status;
 }
