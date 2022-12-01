@@ -10,5 +10,5 @@ public interface TotalCareServiceRepository extends JpaRepository<TotalcareServi
     @Query("select t from TotalcareService as t where t.id = ?1")
     TotalcareService findTotalcareServiceById(Long id);
 
-    void deleteTotalcareServiceBy(Long id);
+    Long deleteTotalcareServiceById(Long id);
 }

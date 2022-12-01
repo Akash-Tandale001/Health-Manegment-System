@@ -10,5 +10,5 @@ public interface MedicineServiceRepository extends JpaRepository<MedicineService
     @Query("select m from MedicineService as m where m.id = ?1")
     MedicineService findMedicineServiceById(Long id);
 
-    void deleteMedicineServiceBy(Long id);
+    Long deleteMedicineServiceById(Long id);
 }

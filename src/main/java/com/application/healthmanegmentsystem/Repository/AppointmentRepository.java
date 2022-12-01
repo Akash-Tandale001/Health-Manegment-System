@@ -10,5 +10,5 @@ public interface AppointmentRepository extends JpaRepository<Appointment,Long> {
     @Query("select a from Appointment as a where a.id = ?1")
     Appointment findAppointmentById(Long id);
 
-    Void deleteAppointmentById(Long id);
+    Long deleteAppointmentById(Long id);
 }

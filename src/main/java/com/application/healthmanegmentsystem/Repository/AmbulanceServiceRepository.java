@@ -10,5 +10,5 @@ public interface AmbulanceServiceRepository extends JpaRepository<AmbulanceServi
     @Query("select a from AmbulanceService as a where a.id = ?1")
     AmbulanceService findAmbulanceServiceById(Long id);
 
-    Void deleteAmbulanceServiceById(Long id);
+    Long deleteAmbulanceServiceById(Long id);
 }

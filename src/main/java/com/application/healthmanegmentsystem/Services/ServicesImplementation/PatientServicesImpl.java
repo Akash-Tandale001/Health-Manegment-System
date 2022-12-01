@@ -184,7 +184,7 @@ public class PatientServicesImpl implements PatientServices {
 
     @Override
     public void deleteAppointmentById(Long id) {
-        appointmentRepository.deleteAppointmentById(id);
+        Long deletedCount = appointmentRepository.deleteAppointmentById(id);
     }
 
     @Override
@@ -203,7 +203,7 @@ public class PatientServicesImpl implements PatientServices {
 
     @Override
     public void deleteBedFacilityServiceById(Long id) {
-        bedFacilityServiceRepository.deleteBedFacilityServiceById(id);
+        Long deletedCount =bedFacilityServiceRepository.deleteBedFacilityServiceById(id);
     }
 
     @Override
@@ -222,7 +222,7 @@ public class PatientServicesImpl implements PatientServices {
 
     @Override
     public void deleteAmbulanceServiceById(Long id) {
-        ambulanceServiceRepository.deleteAmbulanceServiceById(id);
+        Long deletedCount =ambulanceServiceRepository.deleteAmbulanceServiceById(id);
     }
 
     @Override
@@ -241,7 +241,7 @@ public class PatientServicesImpl implements PatientServices {
 
     @Override
     public void deleteFreeCheckupServiceById(Long id) {
-        freeCheckupServiceRepository.deleteFreeCheckupServiceById(id);
+        Long deletedCount = freeCheckupServiceRepository.deleteFreeCheckupServiceById(id);
     }
 
     @Override
@@ -260,7 +260,7 @@ public class PatientServicesImpl implements PatientServices {
 
     @Override
     public void deleteMedicineServiceById(Long id) {
-        medicineServiceRepository.deleteMedicineServiceBy(id);
+        Long deletedCount = medicineServiceRepository.deleteMedicineServiceById(id);
     }
 
     @Override
@@ -279,6 +279,6 @@ public class PatientServicesImpl implements PatientServices {
 
     @Override
     public void deleteTotalcareServiceById(Long id) {
-        totalCareServiceRepository.deleteTotalcareServiceBy(id);
+        Long deletedCount =totalCareServiceRepository.deleteTotalcareServiceById(id);
     }
 }
