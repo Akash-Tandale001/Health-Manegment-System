@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface TotalCareServiceRepository extends JpaRepository<TotalcareService,Long> {
     @Query("select t from TotalcareService as t where t.id = ?1")
     TotalcareService findTotalcareServiceById(Long id);
+
+    void deleteTotalcareServiceBy(Long id);
 }

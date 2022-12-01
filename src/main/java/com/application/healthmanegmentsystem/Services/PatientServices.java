@@ -28,19 +28,25 @@ public interface PatientServices {
 
     void acceptAppointmentById(Long id);
     void rejectAppointmentById(Long id);
+    void deleteAppointmentById(Long id);
     void acceptBedFacilityServiceById(Long id);
     void rejectBedFacilityServiceById(Long id);
+    void deleteBedFacilityServiceById(Long id);
     void acceptAmbulanceServiceById(Long id);
     void rejectAmbulanceServiceById(Long id);
+    void deleteAmbulanceServiceById(Long id);
 
     void acceptFreeCheckupServiceById(Long id);
     void rejectFreeCheckupServiceById(Long id);
+    void deleteFreeCheckupServiceById(Long id);
 
     void acceptMedicineServiceById(Long id);
     void rejectMedicineServiceById(Long id);
+    void deleteMedicineServiceById(Long id);
 
     void acceptTotalcareServiceById(Long id);
     void rejectTotalcareServiceById(Long id);
+    void deleteTotalcareServiceById(Long id);
 
 
 }

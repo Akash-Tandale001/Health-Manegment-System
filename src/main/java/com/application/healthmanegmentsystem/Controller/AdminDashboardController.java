@@ -39,6 +39,7 @@ public class AdminDashboardController {
     }
     @GetMapping("/deleteambulanceRequest/{id}")
     public String deleteAmbulanceRequest(@PathVariable("id") Long id){
+        patientServices.deleteAmbulanceServiceById(id);
         return "redirect:/admin/ambulanceRequest";
     }
     @GetMapping("/bedFacilityRequest")
@@ -59,7 +60,7 @@ public class AdminDashboardController {
     }
     @GetMapping("/deletebedFacilityRequest/{id}")
     public String deleteBedFacilityRequest(@PathVariable("id") Long id){
-        patientServices.rejectBedFacilityServiceById(id);
+        patientServices.deleteBedFacilityServiceById(id);
         return "redirect:/admin/bedFacilityRequest";
     }
     @GetMapping("/medicineRequest")
@@ -80,7 +81,7 @@ public class AdminDashboardController {
     }
     @GetMapping("/deletemedicineRequest/{id}")
     public String deleteMedicineRequest(@PathVariable("id") Long id){
-        patientServices.rejectMedicineServiceById(id);
+        patientServices.deleteMedicineServiceById(id);
         return "redirect:/admin/medicineRequest";
     }
     @GetMapping("/freeCheckupRequest")
@@ -101,7 +102,7 @@ public class AdminDashboardController {
     }
     @GetMapping("/deletefreeCheckupRequest/{id}")
     public String deleteFreeCheckupRequest(@PathVariable("id") Long id){
-        patientServices.rejectFreeCheckupServiceById(id);
+        patientServices.deleteFreeCheckupServiceById(id);
         return "redirect:/admin/freeCheckupRequest";
     }
     @GetMapping("/totalCareRequest")
@@ -122,7 +123,7 @@ public class AdminDashboardController {
     }
     @GetMapping("/deletetotalCareRequest/{id}")
     public String deleteTotalCareRequest(@PathVariable("id") Long id){
-        patientServices.rejectTotalcareServiceById(id);
+        patientServices.deleteTotalcareServiceById(id);
         return "redirect:/admin/totalCareRequest";
     }
     @GetMapping("/appointmentRequest")
@@ -143,7 +144,7 @@ public class AdminDashboardController {
     }
     @GetMapping("/deleteAppointmentRequest/{id}")
     public String deleteApplicationRequest(@PathVariable("id") Long id){
-        patientServices.rejectAppointmentById(id);
+        patientServices.deleteAppointmentById(id);
         return "redirect:/admin/appointmentRequest";
     }
     @GetMapping("/updateRole/{id}/{role}")
