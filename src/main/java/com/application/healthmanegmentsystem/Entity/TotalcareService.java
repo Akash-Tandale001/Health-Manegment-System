@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Data
@@ -17,8 +19,12 @@ public class TotalcareService {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "totalCare_id")
     private Long id;
+    @NotEmpty(message = "Name can't be Empty")
     private String name;
+    @NotEmpty(message = "Phonenumber can't be Empty")
+    @Pattern(regexp="(^$|[0-9]{10})")
     private String phoneNumber;
+    @NotEmpty(message = "Family Size can't be Empty")
     private int familySize;
     private Boolean status;
 }

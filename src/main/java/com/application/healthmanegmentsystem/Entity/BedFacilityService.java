@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import java.util.Date;
 
 @Entity
@@ -18,11 +20,16 @@ public class BedFacilityService {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "bedFacility_id")
     private Long id;
+    @NotEmpty(message = "Name can't be Empty")
     private String name;
+    @NotEmpty(message = "Phone Number can't be Empty")
+    @Pattern(regexp="(^$|[0-9]{10})")
     private String phoneNumber;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
+    @NotEmpty(message = "Date can't be Empty")
     private Date date;
+    @NotEmpty(message = "Bed can't be Empty")
     private String bed;
     private Boolean status;
 }
