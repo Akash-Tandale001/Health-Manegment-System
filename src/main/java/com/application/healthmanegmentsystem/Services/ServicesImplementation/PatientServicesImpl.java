@@ -44,7 +44,7 @@ public class PatientServicesImpl implements PatientServices {
         userInfo.setFirstName(name[0]);
         userInfo.setLastName(name.length == 2 ? name[1]:"");
         userInfo.setEnabled(true);
-        Role role = new Role("ADMIN");
+        Role role = new Role("USER");
         userInfo.setRoles(role);
         userInfoRepository.save(userInfo);
         return "Saved";
