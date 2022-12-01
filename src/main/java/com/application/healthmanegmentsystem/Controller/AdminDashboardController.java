@@ -37,6 +37,10 @@ public class AdminDashboardController {
         patientServices.rejectAmbulanceServiceById(id);
         return "redirect:/admin/ambulanceRequest";
     }
+    @GetMapping("/deleteambulanceRequest/{id}")
+    public String deleteAmbulanceRequest(@PathVariable("id") Long id){
+        return "redirect:/admin/ambulanceRequest";
+    }
     @GetMapping("/bedFacilityRequest")
     public String getBedFacilityRequest(Model model){
         List<BedFacilityService> bedFacilityServices = patientServices.getAllBedFacilityService() ;
@@ -50,6 +54,11 @@ public class AdminDashboardController {
     }
     @GetMapping("/rejectbedFacilityRequest/{id}")
     public String rejectBedFacilityRequest(@PathVariable("id") Long id){
+        patientServices.rejectBedFacilityServiceById(id);
+        return "redirect:/admin/bedFacilityRequest";
+    }
+    @GetMapping("/deletebedFacilityRequest/{id}")
+    public String deleteBedFacilityRequest(@PathVariable("id") Long id){
         patientServices.rejectBedFacilityServiceById(id);
         return "redirect:/admin/bedFacilityRequest";
     }
@@ -69,6 +78,11 @@ public class AdminDashboardController {
         patientServices.rejectMedicineServiceById(id);
         return "redirect:/admin/medicineRequest";
     }
+    @GetMapping("/deletemedicineRequest/{id}")
+    public String deleteMedicineRequest(@PathVariable("id") Long id){
+        patientServices.rejectMedicineServiceById(id);
+        return "redirect:/admin/medicineRequest";
+    }
     @GetMapping("/freeCheckupRequest")
     public String getFreeCheckupRequest(Model model){
         List<FreeCheckupService> freeCheckupServices = patientServices.getAllFreeCheckupService() ;
@@ -82,6 +96,11 @@ public class AdminDashboardController {
     }
     @GetMapping("/rejectfreeCheckupRequest/{id}")
     public String rejectFreeCheckupRequest(@PathVariable("id") Long id){
+        patientServices.rejectFreeCheckupServiceById(id);
+        return "redirect:/admin/freeCheckupRequest";
+    }
+    @GetMapping("/deletefreeCheckupRequest/{id}")
+    public String deleteFreeCheckupRequest(@PathVariable("id") Long id){
         patientServices.rejectFreeCheckupServiceById(id);
         return "redirect:/admin/freeCheckupRequest";
     }
@@ -101,6 +120,11 @@ public class AdminDashboardController {
         patientServices.rejectTotalcareServiceById(id);
         return "redirect:/admin/totalCareRequest";
     }
+    @GetMapping("/deletetotalCareRequest/{id}")
+    public String deleteTotalCareRequest(@PathVariable("id") Long id){
+        patientServices.rejectTotalcareServiceById(id);
+        return "redirect:/admin/totalCareRequest";
+    }
     @GetMapping("/appointmentRequest")
     public String getApplicationRequest(Model model){
         List<Appointment> appointmentList = patientServices.getAllAppointment() ;
@@ -114,6 +138,11 @@ public class AdminDashboardController {
     }
     @GetMapping("/rejectAppointmentRequest/{id}")
     public String rejectApplicationRequest(@PathVariable("id") Long id){
+        patientServices.rejectAppointmentById(id);
+        return "redirect:/admin/appointmentRequest";
+    }
+    @GetMapping("/deleteAppointmentRequest/{id}")
+    public String deleteApplicationRequest(@PathVariable("id") Long id){
         patientServices.rejectAppointmentById(id);
         return "redirect:/admin/appointmentRequest";
     }

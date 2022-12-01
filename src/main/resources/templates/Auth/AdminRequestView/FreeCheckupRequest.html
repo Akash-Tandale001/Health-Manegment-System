@@ -78,6 +78,10 @@
                    th:data-parameter1="${freeCheckupServices.id}"
                    th:href="@{rejectfreeCheckupRequest/{id}(id = ${freeCheckupServices.id})}"
                 >Reject</a>
+                <a class="btn btn-success "
+                   th:data-parameter1="${freeCheckupServices.id}"
+                   th:href="@{deletefreeCheckupRequest/{id}(id = ${freeCheckupServices.id})}"
+                >Delete</a>
             </td>
         </tr>
         </tbody>
