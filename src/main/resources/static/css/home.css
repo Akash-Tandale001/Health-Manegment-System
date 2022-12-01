@@ -108,6 +108,7 @@ a{
 
 .header .navbar a{
     font-size: 1.7rem;
+    text-decoration:none;
     color: var(--light-color);
     margin-left: 2rem;
 }
@@ -525,6 +526,7 @@ a{
 
     .header .navbar{
         position: absolute;
+        text-decoration:none;
         top:115%; right: 2rem;
         border-radius: .5rem;
         box-shadow: var(--box-shadow);
@@ -544,6 +546,7 @@ a{
     }
 
     .header .navbar a{
+        text-decoration:none;
         font-size: 2rem;
         display: block;
         margin:2.5rem;

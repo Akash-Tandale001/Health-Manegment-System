@@ -28,9 +28,9 @@
 
         <form th:action="@{/applyAppointment}" method="post" th:object="${appointmentInfo}" >
             <h3>book appointment</h3>
-            <input type="text" th:field="*{name}" placeholder="your FirstName and LastName" id="name" class="box" >
-            <input type="text" placeholder="your number" class="box" id="mobileNo" th:field="*{mobileNo}">
-            <input type="email" placeholder="your email" class="box" id="email" th:field="*{email}">
+            <input type="text" th:field="*{name}" placeholder="Full Name" id="name" class="box" >
+            <input type="tel" placeholder="Mobile Number" class="box" id="mobileNo" th:field="*{mobileNo}">
+            <input type="email" placeholder="Email" class="box" id="email" th:field="*{email}">
             <input title="date" type="date"  class="box" id="date" th:field="*{date}">
             <button type="submit" class="btn">Book Now</button>
         </form>
