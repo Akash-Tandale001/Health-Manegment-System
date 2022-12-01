@@ -183,6 +183,11 @@ public class PatientServicesImpl implements PatientServices {
     }
 
     @Override
+    public void deleteAppointmentById(Long id) {
+        Long deletedCount = appointmentRepository.deleteAppointmentById(id);
+    }
+
+    @Override
     public void acceptBedFacilityServiceById(Long id) {
         BedFacilityService bedFacilityService = bedFacilityServiceRepository.findBedFacilityServiceById(id);
         bedFacilityService.setStatus(true);
@@ -194,6 +199,11 @@ public class PatientServicesImpl implements PatientServices {
         BedFacilityService bedFacilityService = bedFacilityServiceRepository.findBedFacilityServiceById(id);
         bedFacilityService.setStatus(false);
         bedFacilityServiceRepository.save(bedFacilityService);
+    }
+
+    @Override
+    public void deleteBedFacilityServiceById(Long id) {
+        Long deletedCount =bedFacilityServiceRepository.deleteBedFacilityServiceById(id);
     }
 
     @Override
@@ -211,6 +221,11 @@ public class PatientServicesImpl implements PatientServices {
     }
 
     @Override
+    public void deleteAmbulanceServiceById(Long id) {
+        Long deletedCount =ambulanceServiceRepository.deleteAmbulanceServiceById(id);
+    }
+
+    @Override
     public void acceptFreeCheckupServiceById(Long id) {
         FreeCheckupService freeCheckupService = freeCheckupServiceRepository.findFreeCheckupServiceById(id);
         freeCheckupService.setStatus(true);
@@ -222,6 +237,11 @@ public class PatientServicesImpl implements PatientServices {
         FreeCheckupService freeCheckupService = freeCheckupServiceRepository.findFreeCheckupServiceById(id);
         freeCheckupService.setStatus(false);
         freeCheckupServiceRepository.save(freeCheckupService);
+    }
+
+    @Override
+    public void deleteFreeCheckupServiceById(Long id) {
+        Long deletedCount = freeCheckupServiceRepository.deleteFreeCheckupServiceById(id);
     }
 
     @Override
@@ -239,6 +259,11 @@ public class PatientServicesImpl implements PatientServices {
     }
 
     @Override
+    public void deleteMedicineServiceById(Long id) {
+        Long deletedCount = medicineServiceRepository.deleteMedicineServiceById(id);
+    }
+
+    @Override
     public void acceptTotalcareServiceById(Long id) {
         TotalcareService totalcareService = totalCareServiceRepository.findTotalcareServiceById(id);
         totalcareService.setStatus(true);
@@ -250,5 +275,10 @@ public class PatientServicesImpl implements PatientServices {
         TotalcareService totalcareService = totalCareServiceRepository.findTotalcareServiceById(id);
         totalcareService.setStatus(false);
         totalCareServiceRepository.save(totalcareService);
+    }
+
+    @Override
+    public void deleteTotalcareServiceById(Long id) {
+        Long deletedCount =totalCareServiceRepository.deleteTotalcareServiceById(id);
     }
 }

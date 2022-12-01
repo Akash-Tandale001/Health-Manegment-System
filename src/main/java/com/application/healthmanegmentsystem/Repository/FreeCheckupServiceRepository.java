@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface FreeCheckupServiceRepository extends JpaRepository<FreeCheckupService,Long> {
     @Query("select f from FreeCheckupService as f where f.id = ?1")
     FreeCheckupService findFreeCheckupServiceById(Long id);
+
+    Long deleteFreeCheckupServiceById(Long id);
 }
