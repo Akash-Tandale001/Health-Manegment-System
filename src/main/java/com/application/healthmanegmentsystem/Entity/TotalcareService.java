@@ -24,7 +24,6 @@ public class TotalcareService {
     @NotEmpty(message = "Phonenumber can't be Empty")
     @Pattern(regexp="(^$|[0-9]{10})")
     private String phoneNumber;
-    @NotEmpty(message = "Family Size can't be Empty")
     private int familySize;
     private Boolean status;
 }

@@ -32,7 +32,6 @@ public class FreeCheckupService {
     @NotEmpty(message = "Issue can't be Empty")
     private String issue;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @NotEmpty(message = "Date can't be Empty")
     private Date date;
     private boolean status;
 }

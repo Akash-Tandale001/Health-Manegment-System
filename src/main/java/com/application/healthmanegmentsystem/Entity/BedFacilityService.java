@@ -27,7 +27,6 @@ public class BedFacilityService {
     private String phoneNumber;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
-    @NotEmpty(message = "Date can't be Empty")
     private Date date;
     @NotEmpty(message = "Bed can't be Empty")
     private String bed;
