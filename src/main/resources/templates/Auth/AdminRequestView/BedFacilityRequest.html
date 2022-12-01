@@ -69,13 +69,17 @@
                 <a class="btn btn-success"
                    th:if="${!bedFacilityServices.status}"
                    th:data-parameter1="${bedFacilityServices.id}"
-                   th:href="@{acceptFacilityRequest/{id}(id = ${bedFacilityServices.id})}"
+                   th:href="@{acceptbedFacilityRequest/{id}(id = ${bedFacilityServices.id})}"
                 >Accept</a>
                 <a class="btn btn-success"
                    th:if="${bedFacilityServices.status}"
                    th:data-parameter1="${bedFacilityServices.id}"
-                   th:href="@{rejectFacilityRequest/{id}(id = ${bedFacilityServices.id})}"
+                   th:href="@{rejectbedFacilityRequest/{id}(id = ${bedFacilityServices.id})}"
                 >Reject</a>
+                <a class="btn btn-success"
+                   th:data-parameter1="${bedFacilityServices.id}"
+                   th:href="@{deleteFacilityRequest/{id}(id = ${bedFacilityServices.id})}"
+                >Delete</a>
             </td>
         </tr>
         </tbody>

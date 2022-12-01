@@ -29,7 +29,6 @@ public class AmbulanceService {
     private String Address;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
-    @NotEmpty(message = "*date can't be Empty")
     private Date date;
     private Boolean status;
 }
