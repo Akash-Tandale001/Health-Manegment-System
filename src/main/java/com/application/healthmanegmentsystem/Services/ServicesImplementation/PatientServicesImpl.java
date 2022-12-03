@@ -189,12 +189,12 @@ public class PatientServicesImpl implements PatientServices {
     @Override
     public void acceptAppointmentById(Long id) {
         Appointment appointment = appointmentRepository.findAppointmentById(id);
-//        UserInfo userInfo = userInfoRepository.findUserInfoById(appointment);
+        UserInfo userInfo = userInfoRepository.findUserInfoById(appointmentRepository.getUserId(id));
         appointment.setStatus(true);
         appointmentRepository.save(appointment);
-//        boolean status = sendEmail.sendSimpleMail(userinfo.getUsername(),
-//                emailMessage.userAmbulanceRequestSuccess(userinfo.getFirstName()),
-//                "MedCare TotalCare Request Successfully submitted");
+        boolean status = sendEmail.sendSimpleMail(userInfo.getUsername(),
+                emailMessage.userAmbulanceRequestSuccess(userInfo.getFirstName()),
+                "MedCare Appointment Request Accepted");
     }
 
     @Override
@@ -213,8 +213,12 @@ public class PatientServicesImpl implements PatientServices {
     @Override
     public void acceptBedFacilityServiceById(Long id) {
         BedFacilityService bedFacilityService = bedFacilityServiceRepository.findBedFacilityServiceById(id);
+        UserInfo userInfo = userInfoRepository.findUserInfoById(appointmentRepository.getUserId(id));
         bedFacilityService.setStatus(true);
         bedFacilityServiceRepository.save(bedFacilityService);
+        boolean status = sendEmail.sendSimpleMail(userInfo.getUsername(),
+                emailMessage.userAmbulanceRequestSuccess(userInfo.getFirstName()),
+                "MedCare BedFacility Request Accepted");
     }
 
     @Override
@@ -232,8 +236,12 @@ public class PatientServicesImpl implements PatientServices {
     @Override
     public void acceptAmbulanceServiceById(Long id) {
         AmbulanceService ambulanceService = ambulanceServiceRepository.findAmbulanceServiceById(id);
+        UserInfo userInfo = userInfoRepository.findUserInfoById(appointmentRepository.getUserId(id));
         ambulanceService.setStatus(true);
         ambulanceServiceRepository.save(ambulanceService);
+        boolean status = sendEmail.sendSimpleMail(userInfo.getUsername(),
+                emailMessage.userAmbulanceRequestSuccess(userInfo.getFirstName()),
+                "MedCare Amulance Request Accepted");
     }
 
     @Override
@@ -251,8 +259,12 @@ public class PatientServicesImpl implements PatientServices {
     @Override
     public void acceptFreeCheckupServiceById(Long id) {
         FreeCheckupService freeCheckupService = freeCheckupServiceRepository.findFreeCheckupServiceById(id);
+        UserInfo userInfo = userInfoRepository.findUserInfoById(appointmentRepository.getUserId(id));
         freeCheckupService.setStatus(true);
         freeCheckupServiceRepository.save(freeCheckupService);
+        boolean status = sendEmail.sendSimpleMail(userInfo.getUsername(),
+                emailMessage.userAmbulanceRequestSuccess(userInfo.getFirstName()),
+                "MedCare FreeCheckup Request Accepted");
     }
 
     @Override
@@ -270,8 +282,12 @@ public class PatientServicesImpl implements PatientServices {
     @Override
     public void acceptMedicineServiceById(Long id) {
         MedicineService medicineService = medicineServiceRepository.findMedicineServiceById(id);
+        UserInfo userInfo = userInfoRepository.findUserInfoById(appointmentRepository.getUserId(id));
         medicineService.setStatus(true);
         medicineServiceRepository.save(medicineService);
+        boolean status = sendEmail.sendSimpleMail(userInfo.getUsername(),
+                emailMessage.userAmbulanceRequestSuccess(userInfo.getFirstName()),
+                "MedCare Medicine Request Accepted");
     }
 
     @Override
@@ -289,8 +305,12 @@ public class PatientServicesImpl implements PatientServices {
     @Override
     public void acceptTotalcareServiceById(Long id) {
         TotalcareService totalcareService = totalCareServiceRepository.findTotalcareServiceById(id);
+        UserInfo userInfo = userInfoRepository.findUserInfoById(appointmentRepository.getUserId(id));
         totalcareService.setStatus(true);
         totalCareServiceRepository.save(totalcareService);
+        boolean status = sendEmail.sendSimpleMail(userInfo.getUsername(),
+                emailMessage.userAmbulanceRequestSuccess(userInfo.getFirstName()),
+                "MedCare TotalCare Request Accepted");
     }
 
     @Override
