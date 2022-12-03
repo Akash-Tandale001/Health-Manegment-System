@@ -1,14 +1,13 @@
 package com.application.healthmanegmentsystem.Services.ServicesImplementation;
 
 import com.application.healthmanegmentsystem.Entity.*;
+import com.application.healthmanegmentsystem.Helper.EmailMessage;
 import com.application.healthmanegmentsystem.Repository.*;
+import com.application.healthmanegmentsystem.Services.EmailSenderService;
 import com.application.healthmanegmentsystem.Services.PatientServices;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Service
@@ -20,21 +19,20 @@ public class PatientServicesImpl implements PatientServices {
     AuthoritiesRepository authoritiesRepository;
     @Autowired
     AppointmentRepository appointmentRepository;
-
     @Autowired
     AmbulanceServiceRepository ambulanceServiceRepository;
-
     @Autowired
     BedFacilityServiceRepository bedFacilityServiceRepository;
-
     @Autowired
     FreeCheckupServiceRepository freeCheckupServiceRepository;
-
     @Autowired
     MedicineServiceRepository medicineServiceRepository;
-
     @Autowired
     TotalCareServiceRepository totalCareServiceRepository;
+    @Autowired
+    EmailSenderService sendEmail;
+    @Autowired
+    EmailMessage emailMessage;
     @Override
     public String processRegistration(UserInfo userInfo) {
 //        Set<Role> roleSet = new HashSet<>();
@@ -47,6 +45,9 @@ public class PatientServicesImpl implements PatientServices {
         Role role = new Role("USER");
         userInfo.setRoles(role);
         userInfoRepository.save(userInfo);
+        boolean status = sendEmail.sendSimpleMail(userInfo.getUsername(),
+                emailMessage.userRegistrationMessage(userInfo.getFirstName()),
+                "MedCare Account Created");
         return "Saved";
     }
 
@@ -115,6 +116,9 @@ public class PatientServicesImpl implements PatientServices {
         appointmentSet.add(appointment);
         userinfo.setAppointmentList(appointmentSet);
         userInfoRepository.save(userinfo);
+        boolean status = sendEmail.sendSimpleMail(userinfo.getUsername(),
+                emailMessage.userAppointmentSuccess(userinfo.getFirstName()),
+                "MedCare Appointment Successfully submitted");
     }
 
     @Override
@@ -125,6 +129,9 @@ public class PatientServicesImpl implements PatientServices {
         ambulanceServiceSet.add(ambulanceService);
         userinfo.setAmbulanceServiceList(ambulanceServiceSet);
         userInfoRepository.save(userinfo);
+        boolean status = sendEmail.sendSimpleMail(userinfo.getUsername(),
+                emailMessage.userAmbulanceRequestSuccess(userinfo.getFirstName()),
+                "MedCare Ambulance Request Successfully submitted");
     }
 
     @Override
@@ -135,6 +142,9 @@ public class PatientServicesImpl implements PatientServices {
         bedFacilityServiceSet.add(bedFacilityService);
         userinfo.setBedFacilityServiceList(bedFacilityServiceSet);
         userInfoRepository.save(userinfo);
+        boolean status = sendEmail.sendSimpleMail(userinfo.getUsername(),
+                emailMessage.userAmbulanceRequestSuccess(userinfo.getFirstName()),
+                "MedCare BedFacility Request Successfully submitted");
     }
 
     @Override
@@ -145,6 +155,9 @@ public class PatientServicesImpl implements PatientServices {
         freeCheckupServiceSet.add(freeCheckupService);
         userinfo.setFreeCheckupServiceList(freeCheckupServiceSet);
         userInfoRepository.save(userinfo);
+        boolean status = sendEmail.sendSimpleMail(userinfo.getUsername(),
+                emailMessage.userAmbulanceRequestSuccess(userinfo.getFirstName()),
+                "MedCare FreeCheckup Request Successfully submitted");
     }
 
     @Override
@@ -155,6 +168,9 @@ public class PatientServicesImpl implements PatientServices {
         medicineServiceSet.add(medicineService);
         userinfo.setMedicineServicesList(medicineServiceSet);
         userInfoRepository.save(userinfo);
+        boolean status = sendEmail.sendSimpleMail(userinfo.getUsername(),
+                emailMessage.userAmbulanceRequestSuccess(userinfo.getFirstName()),
+                "MedCare Medicine Request Successfully submitted");
     }
 
     @Override
@@ -165,13 +181,20 @@ public class PatientServicesImpl implements PatientServices {
         totalcareServiceSet.add(totalcareService);
         userinfo.setTotalcareServicesList(totalcareServiceSet);
         userInfoRepository.save(userinfo);
+        boolean status = sendEmail.sendSimpleMail(userinfo.getUsername(),
+                emailMessage.userAmbulanceRequestSuccess(userinfo.getFirstName()),
+                "MedCare TotalCare Request Successfully submitted");
     }
 
     @Override
     public void acceptAppointmentById(Long id) {
         Appointment appointment = appointmentRepository.findAppointmentById(id);
+//        UserInfo userInfo = userInfoRepository.findUserInfoById(appointment);
         appointment.setStatus(true);
         appointmentRepository.save(appointment);
+//        boolean status = sendEmail.sendSimpleMail(userinfo.getUsername(),
+//                emailMessage.userAmbulanceRequestSuccess(userinfo.getFirstName()),
+//                "MedCare TotalCare Request Successfully submitted");
     }
 
     @Override
