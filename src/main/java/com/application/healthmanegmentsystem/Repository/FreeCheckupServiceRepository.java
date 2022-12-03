@@ -11,4 +11,7 @@ public interface FreeCheckupServiceRepository extends JpaRepository<FreeCheckupS
     FreeCheckupService findFreeCheckupServiceById(Long id);
 
     Long deleteFreeCheckupServiceById(Long id);
+
+    @Query(value = "select a.freeCheckup_service from freeCheckupService from freeCheckupService as a where a.freeCheckup_id = ?1",nativeQuery = true)
+    Long getUserId(Long id);
 }

@@ -11,4 +11,7 @@ public interface BedFacilityServiceRepository extends JpaRepository<BedFacilityS
     BedFacilityService findBedFacilityServiceById(Long id);
 
     Long deleteBedFacilityServiceById(Long id);
+
+    @Query(value = "select a.bedFacility_service from bedFacilityService as a where a.bedFacility_id = ?1",nativeQuery = true)
+    Long getUserId(Long id);
 }

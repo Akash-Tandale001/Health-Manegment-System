@@ -11,4 +11,7 @@ public interface AmbulanceServiceRepository extends JpaRepository<AmbulanceServi
     AmbulanceService findAmbulanceServiceById(Long id);
 
     Long deleteAmbulanceServiceById(Long id);
+
+    @Query(value = "select a.ambulance_service from ambulanceService as a where a.aumbulance_id = ?1",nativeQuery = true)
+    Long getUserId(Long id);
 }

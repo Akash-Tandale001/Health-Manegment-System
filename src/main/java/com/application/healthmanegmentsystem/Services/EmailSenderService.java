@@ -17,7 +17,7 @@ public class EmailSenderService {
             message.setTo(toEmail);
             message.setSubject(subject);
             message.setText(body);
-            message.setCc("akashtandle987@gmail.com");
+//            message.setCc("akashtandle987@gmail.com");
             mailSender.send(message);
             return true;
         }

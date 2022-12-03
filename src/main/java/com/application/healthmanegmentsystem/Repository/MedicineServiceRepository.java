@@ -11,4 +11,7 @@ public interface MedicineServiceRepository extends JpaRepository<MedicineService
     MedicineService findMedicineServiceById(Long id);
 
     Long deleteMedicineServiceById(Long id);
+
+    @Query(value = "select a.medicine_service medicineService from freeCheckupService as a where a.medicine_id = ?1",nativeQuery = true)
+    Long getUserId(Long id);
 }
