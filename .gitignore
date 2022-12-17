@@ -33,11 +33,11 @@ build/
 .vscode/
 
 # Local configuration file (sdk path, etc)
-local.properties
-*.properties
+#local.properties
+#*.properties
 
-secrets.properties
-project.properties
-*.properties
-project.properties
-src/main/resources/application.properties
+#secrets.properties
+#project.properties
+#*.properties
+#project.properties
+#src/main/resources/application.properties
