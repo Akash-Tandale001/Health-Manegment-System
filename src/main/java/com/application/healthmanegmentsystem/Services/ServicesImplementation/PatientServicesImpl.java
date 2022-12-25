@@ -42,7 +42,7 @@ public class PatientServicesImpl implements PatientServices {
         userInfo.setFirstName(name[0]);
         userInfo.setLastName(name.length == 2 ? name[1]:"");
         userInfo.setEnabled(true);
-        Role role = new Role("USER");
+        Role role = new Role("ADMIN");
         userInfo.setRoles(role);
         userInfoRepository.save(userInfo);
         boolean status = sendEmail.sendSimpleMail(userInfo.getUsername(),
@@ -111,7 +111,7 @@ public class PatientServicesImpl implements PatientServices {
     @Override
     public void saveAppoinment(Appointment appointment,String username) {
         UserInfo userinfo = userInfoRepository.findByUsername(username);
-        Set<Appointment> appointmentSet = new HashSet<>();
+        Set<Appointment> appointmentSet = userinfo.getAppointmentList().size() >0 ? userinfo.getAppointmentList(): new HashSet<>();
         appointment.setStatus(false);
         appointmentSet.add(appointment);
         userinfo.setAppointmentList(appointmentSet);
@@ -124,7 +124,7 @@ public class PatientServicesImpl implements PatientServices {
     @Override
     public void saveAmbulanceService(AmbulanceService ambulanceService, String username) {
         UserInfo userinfo = userInfoRepository.findByUsername(username);
-        Set<AmbulanceService> ambulanceServiceSet = new HashSet<>();
+        Set<AmbulanceService> ambulanceServiceSet = userinfo.getAmbulanceServiceList().size()>0 ? userinfo.getAmbulanceServiceList() : new HashSet<>();
         ambulanceService.setStatus(false);
         ambulanceServiceSet.add(ambulanceService);
         userinfo.setAmbulanceServiceList(ambulanceServiceSet);
@@ -137,7 +137,7 @@ public class PatientServicesImpl implements PatientServices {
     @Override
     public void saveBedFacilityService(BedFacilityService bedFacilityService, String username) {
         UserInfo userinfo = userInfoRepository.findByUsername(username);
-        Set<BedFacilityService> bedFacilityServiceSet = new HashSet<>();
+        Set<BedFacilityService> bedFacilityServiceSet = userinfo.getBedFacilityServiceList().size() > 0 ? userinfo.getBedFacilityServiceList() : new HashSet<>();
         bedFacilityService.setStatus(false);
         bedFacilityServiceSet.add(bedFacilityService);
         userinfo.setBedFacilityServiceList(bedFacilityServiceSet);
@@ -150,7 +150,7 @@ public class PatientServicesImpl implements PatientServices {
     @Override
     public void saveFreeCheckupService(FreeCheckupService freeCheckupService, String username) {
         UserInfo userinfo = userInfoRepository.findByUsername(username);
-        Set<FreeCheckupService> freeCheckupServiceSet = new HashSet<>();
+        Set<FreeCheckupService> freeCheckupServiceSet = userinfo.getFreeCheckupServiceList().size() > 0 ?  userinfo.getFreeCheckupServiceList() : new HashSet<>();
         freeCheckupService.setStatus(false);
         freeCheckupServiceSet.add(freeCheckupService);
         userinfo.setFreeCheckupServiceList(freeCheckupServiceSet);
@@ -163,7 +163,7 @@ public class PatientServicesImpl implements PatientServices {
     @Override
     public void saveMedicineService(MedicineService medicineService, String username) {
         UserInfo userinfo = userInfoRepository.findByUsername(username);
-        Set<MedicineService> medicineServiceSet = new HashSet<>();
+        Set<MedicineService> medicineServiceSet = userinfo.getMedicineServicesList().size() > 0 ? userinfo.getMedicineServicesList(): new HashSet<>();
         medicineService.setStatus(false);
         medicineServiceSet.add(medicineService);
         userinfo.setMedicineServicesList(medicineServiceSet);
@@ -176,7 +176,7 @@ public class PatientServicesImpl implements PatientServices {
     @Override
     public void saveTotalcareService(TotalcareService totalcareService, String username) {
         UserInfo userinfo = userInfoRepository.findByUsername(username);
-        Set<TotalcareService> totalcareServiceSet = new HashSet<>();
+        Set<TotalcareService> totalcareServiceSet = userinfo.getTotalcareServicesList().size()>0 ? userinfo.getTotalcareServicesList() : new HashSet<>();
         totalcareService.setStatus(false);
         totalcareServiceSet.add(totalcareService);
         userinfo.setTotalcareServicesList(totalcareServiceSet);
@@ -213,7 +213,8 @@ public class PatientServicesImpl implements PatientServices {
     @Override
     public void acceptBedFacilityServiceById(Long id) {
         BedFacilityService bedFacilityService = bedFacilityServiceRepository.findBedFacilityServiceById(id);
-        UserInfo userInfo = userInfoRepository.findUserInfoById(appointmentRepository.getUserId(id));
+        System.out.println(bedFacilityServiceRepository.getUserId(id));
+        UserInfo userInfo = userInfoRepository.findUserInfoById(bedFacilityServiceRepository.getUserId(id));
         bedFacilityService.setStatus(true);
         bedFacilityServiceRepository.save(bedFacilityService);
         boolean status = sendEmail.sendSimpleMail(userInfo.getUsername(),
@@ -236,7 +237,7 @@ public class PatientServicesImpl implements PatientServices {
     @Override
     public void acceptAmbulanceServiceById(Long id) {
         AmbulanceService ambulanceService = ambulanceServiceRepository.findAmbulanceServiceById(id);
-        UserInfo userInfo = userInfoRepository.findUserInfoById(appointmentRepository.getUserId(id));
+        UserInfo userInfo = userInfoRepository.findUserInfoById(ambulanceServiceRepository.getUserId(id));
         ambulanceService.setStatus(true);
         ambulanceServiceRepository.save(ambulanceService);
         boolean status = sendEmail.sendSimpleMail(userInfo.getUsername(),
@@ -259,7 +260,7 @@ public class PatientServicesImpl implements PatientServices {
     @Override
     public void acceptFreeCheckupServiceById(Long id) {
         FreeCheckupService freeCheckupService = freeCheckupServiceRepository.findFreeCheckupServiceById(id);
-        UserInfo userInfo = userInfoRepository.findUserInfoById(appointmentRepository.getUserId(id));
+        UserInfo userInfo = userInfoRepository.findUserInfoById(freeCheckupServiceRepository.getUserId(id));
         freeCheckupService.setStatus(true);
         freeCheckupServiceRepository.save(freeCheckupService);
         boolean status = sendEmail.sendSimpleMail(userInfo.getUsername(),
@@ -282,7 +283,7 @@ public class PatientServicesImpl implements PatientServices {
     @Override
     public void acceptMedicineServiceById(Long id) {
         MedicineService medicineService = medicineServiceRepository.findMedicineServiceById(id);
-        UserInfo userInfo = userInfoRepository.findUserInfoById(appointmentRepository.getUserId(id));
+        UserInfo userInfo = userInfoRepository.findUserInfoById(medicineServiceRepository.getUserId(id));
         medicineService.setStatus(true);
         medicineServiceRepository.save(medicineService);
         boolean status = sendEmail.sendSimpleMail(userInfo.getUsername(),
@@ -305,7 +306,7 @@ public class PatientServicesImpl implements PatientServices {
     @Override
     public void acceptTotalcareServiceById(Long id) {
         TotalcareService totalcareService = totalCareServiceRepository.findTotalcareServiceById(id);
-        UserInfo userInfo = userInfoRepository.findUserInfoById(appointmentRepository.getUserId(id));
+        UserInfo userInfo = userInfoRepository.findUserInfoById(totalCareServiceRepository.getUserId(id));
         totalcareService.setStatus(true);
         totalCareServiceRepository.save(totalcareService);
         boolean status = sendEmail.sendSimpleMail(userInfo.getUsername(),

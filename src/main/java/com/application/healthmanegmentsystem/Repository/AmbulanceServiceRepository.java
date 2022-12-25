@@ -7,11 +7,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AmbulanceServiceRepository extends JpaRepository<AmbulanceService,Long> {
-    @Query("select a from AmbulanceService as a where a.id = ?1")
     AmbulanceService findAmbulanceServiceById(Long id);
 
     Long deleteAmbulanceServiceById(Long id);
 
-    @Query(value = "select a.ambulance_service from ambulanceService as a where a.aumbulance_id = ?1",nativeQuery = true)
+    @Query(value = "select distinct a.ambulance_service from ambulance_service as a where a.aumbulance_id = ?1",nativeQuery = true)
     Long getUserId(Long id);
 }

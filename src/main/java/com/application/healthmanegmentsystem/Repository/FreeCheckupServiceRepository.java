@@ -7,11 +7,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FreeCheckupServiceRepository extends JpaRepository<FreeCheckupService,Long> {
-    @Query("select f from FreeCheckupService as f where f.id = ?1")
     FreeCheckupService findFreeCheckupServiceById(Long id);
 
     Long deleteFreeCheckupServiceById(Long id);
 
-    @Query(value = "select a.freeCheckup_service from freeCheckupService from freeCheckupService as a where a.freeCheckup_id = ?1",nativeQuery = true)
+    @Query(value = "select distinct a.free_checkup_service from free_checkup_service as a where a.free_checkup_id = ?1",nativeQuery = true)
     Long getUserId(Long id);
 }

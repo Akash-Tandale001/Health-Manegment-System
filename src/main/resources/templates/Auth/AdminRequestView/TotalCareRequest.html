@@ -67,7 +67,7 @@
                 <a class="btn btn-success"
                    th:if="${!totalcareServices.status}"
                    th:data-parameter1="${totalcareServices.id}"
-                   th:href="@{accpettotalCareRequest/{id}(id = ${totalcareServices.id})}"
+                   th:href="@{accepttotalCareRequest/{id}(id = ${totalcareServices.id})}"
                 >Accept</a>
                 <a class="btn btn-success"
                    th:if="${totalcareServices.status}"
