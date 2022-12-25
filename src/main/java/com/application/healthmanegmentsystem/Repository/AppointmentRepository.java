@@ -15,6 +15,6 @@ public interface AppointmentRepository extends JpaRepository<Appointment,Long> {
     Long deleteAppointmentById(Long id);
 
 //    @Native("select user_appointments from appointments as a where a.id == ?1")
-    @Query(value = "select a.user_appointments from appointments as a where a.appointment_id = ?1",nativeQuery = true)
+    @Query(value = "select distinct a.user_appointments from appointments as a where a.appointment_id = ?1",nativeQuery = true)
     Long getUserId(Long id);
 }

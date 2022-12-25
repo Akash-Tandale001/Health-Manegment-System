@@ -7,9 +7,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TotalCareServiceRepository extends JpaRepository<TotalcareService,Long> {
-    @Query("select t from TotalcareService as t where t.id = ?1")
     TotalcareService findTotalcareServiceById(Long id);
     Long deleteTotalcareServiceById(Long id);
-    @Query(value = "select a.totalcare_service medicineService from totalcareService as a where a.totalCare_id = ?1",nativeQuery = true)
+    @Query(value = "select distinct a.totalcare_service from totalcare_service as a where a.total_care_id = ?1",nativeQuery = true)
     Long getUserId(Long id);
 }

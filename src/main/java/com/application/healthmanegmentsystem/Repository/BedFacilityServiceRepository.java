@@ -7,11 +7,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BedFacilityServiceRepository extends JpaRepository<BedFacilityService,Long> {
-    @Query("select b from BedFacilityService as b where b.id = ?1")
     BedFacilityService findBedFacilityServiceById(Long id);
 
     Long deleteBedFacilityServiceById(Long id);
 
-    @Query(value = "select a.bedFacility_service from bedFacilityService as a where a.bedFacility_id = ?1",nativeQuery = true)
+    @Query(value = "select distinct a.bed_facility_service from bed_facility_service as a where a.bed_facility_id = ?1",nativeQuery = true)
     Long getUserId(Long id);
 }
