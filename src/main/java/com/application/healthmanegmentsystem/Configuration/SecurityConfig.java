@@ -65,7 +65,7 @@ public class SecurityConfig {
                 .anyRequest()
                 .authenticated()
                 .and()
-                .formLogin().loginPage("/login").loginProcessingUrl("/process-login").permitAll()
+                .formLogin().loginPage("/login").loginProcessingUrl("/process-login").defaultSuccessUrl("/",true).permitAll()
                 .and()
                 .httpBasic()
                 .and()

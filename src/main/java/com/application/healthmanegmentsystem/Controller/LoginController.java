@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
+
 public class LoginController {
     @Autowired
     private PatientServicesImpl userServices;
@@ -24,7 +25,7 @@ public class LoginController {
 
     @GetMapping("/registration")
     public String getRegistration(@ModelAttribute("userInfo") UserInfo userInfo){
-        return "/Auth/Registration";
+        return "Auth/Registration";
     }
 
 

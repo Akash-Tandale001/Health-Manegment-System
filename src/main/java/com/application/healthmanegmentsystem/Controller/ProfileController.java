@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/profile")
+
 public class ProfileController {
     @Autowired
     private PatientServicesImpl patientServices;
@@ -19,7 +20,7 @@ public class ProfileController {
     public String getUserpage(Authentication auth , Model model){
         UserInfo userInfo = patientServices.getLogedInUserDetailss(auth.getName());
         model.addAttribute("logInfoDetails",userInfo);
-        return "/Auth/Profile";
+        return "Auth/Profile";
     }
     @PostMapping("/processDetailsUpdate")
     public String UpdateProfile(UserInfo userInfo ){

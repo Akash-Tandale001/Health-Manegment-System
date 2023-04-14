@@ -15,17 +15,18 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/services")
+
 public class ServicesController {
     @Autowired
     PatientServices patientServices;
     @GetMapping()
     public String getServicesPage(){
-        return "/View/Services";
+        return "View/Services";
     }
 
     @GetMapping("/freeCheckup")
     public String getServicesFreeCheckupPage(@ModelAttribute("freecheckupInfo")FreeCheckupService freeCheckupService){
-        return "/ServicesForm/FreeCheckup";
+        return "ServicesForm/FreeCheckup";
     }
     @PostMapping("/applyFreeCheckup")
     public String applyFreeCheckupPage(@Valid @ModelAttribute("freecheckupInfo")FreeCheckupService freeCheckupService , BindingResult result , Authentication auth){
@@ -40,7 +41,7 @@ public class ServicesController {
     @GetMapping("/ambulance")
     public String getServicesAmbulancePage(@ModelAttribute("ambulanceInfo")AmbulanceService ambulanceService){
 
-        return "/ServicesForm/Ambulance";
+        return "ServicesForm/Ambulance";
     }
     @PostMapping("/applyAmbulance")
     public String applyAmbulancePage(@Valid @ModelAttribute("ambulanceInfo")AmbulanceService ambulanceService , BindingResult result , Authentication auth){
@@ -55,7 +56,7 @@ public class ServicesController {
 
     @GetMapping("/medicines")
     public String getServicesMedicinesPage(@ModelAttribute("medicineInfo")MedicineService medicineService){
-        return "/ServicesForm/Medicines";
+        return "ServicesForm/Medicines";
     }
     @PostMapping("/applyMedicines")
     public String applyMedicinesPage(@Valid @ModelAttribute("medicineInfo")MedicineService medicineService , BindingResult result , Authentication auth){
@@ -70,7 +71,7 @@ public class ServicesController {
 
     @GetMapping("/bedFacility")
     public String getServicesBedFacilityPage(@ModelAttribute("bedFacilityInfo")BedFacilityService bedFacilityService){
-        return "/ServicesForm/BedFacility";
+        return "ServicesForm/BedFacility";
     }
     @PostMapping("/applyBedFacility")
     public String applyBedFacilityPage(@Valid @ModelAttribute("bedFacilityInfo")BedFacilityService bedFacilityService , BindingResult result , Authentication auth){
@@ -84,7 +85,7 @@ public class ServicesController {
 
     @GetMapping("/totalCare")
     public String getServicesTotalCarePage(@ModelAttribute("totalCareInfo")TotalcareService totalcareService){
-        return "/ServicesForm/TotalCare";
+        return "ServicesForm/TotalCare";
     }
     @PostMapping("/applyTotalCare")
     public String applyTotalCarePage(@Valid @ModelAttribute("totalCareInfo")TotalcareService totalcareService , BindingResult result , Authentication auth){
