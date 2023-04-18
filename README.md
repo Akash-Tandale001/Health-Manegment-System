@@ -5,5 +5,7 @@
 - Spring Security
 - Spring JPA
 - Thymleaf
-- SQL server (Azure Cloud DB)
+- AWS Mysql (RDS)
 - Mail Services
+- Docker
+- Kubernetes
